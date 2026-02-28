@@ -19,10 +19,15 @@ Today’s users perform most of their financial activity through UPI, credit car
 
 ## Target Users
 •⁠  ⁠College students managing monthly allowances or stipends
+
 •⁠  ⁠Working professionals using UPI and credit cards regularly
+
 •⁠  ⁠Individuals tracking recurring subscriptions and auto-debits
+
 •⁠  ⁠Users concerned about fraudulent or unauthorized transactions
+
 •⁠  ⁠First-time personal finance users seeking financial awareness
+
 •⁠  ⁠Anyone who downloads bank statements but never meaningfully analyzes them
 
 ---
@@ -71,15 +76,25 @@ Traano combines rule-based processing, statistical analysis, and AI reasoning (G
 
 ## Key Features
 •⁠  ⁠Upload bank statements (CSV and PDF)
+
 •⁠  ⁠Automatic transaction extraction and normalization
+
 •⁠  ⁠AI-based merchant categorization using Gemini
+
 •⁠  ⁠Detection of unusual spending patterns
+
 •⁠  ⁠New/suspicious merchant identification
+
 •⁠  ⁠Spending frequency change detection
+
 •⁠  ⁠High-value transaction alerts
+
 •⁠  ⁠Behavioral shift analysis
+
 •⁠  ⁠Explainable anomaly risk scores
+
 •⁠  ⁠Visual spending trends and timeline
+
 •⁠  ⁠AI-generated financial summaries and insights
 
 ---
@@ -111,22 +126,11 @@ Traano follows a modular full-stack architecture consisting of a web interface, 
 
 ---
 
-## Architecture Diagram
-(Add system architecture diagram image here)
-
-Suggested diagram components:
-•⁠  ⁠User
-•⁠  ⁠React Frontend
-•⁠  ⁠Express Backend
-•⁠  ⁠Python Anomaly Service
-•⁠  ⁠Gemini API
-•⁠  ⁠MongoDB Database
-•⁠  ⁠Response Dashboard
-
 # 5. Database Design
 
 ## ER Diagram
-(Add ER diagram image here)
+
+![ER Diagram](Diagram%20from%20dbdiagram.png)
 
 ---
 

@@ -5,10 +5,17 @@ Traano is an AI-powered web application that analyzes bank statements, automatic
 
 ---
 
+<<<<<<< Updated upstream
 # 1. Problem Statement
 
 ## Problem Title
 *Absence of Intelligent Monitoring and Explainable Insights in Personal Digital Finance*
+=======
+# 1. Problem Statement : Personal Finance Anomaly Detector 
+
+## Problem Title
+**Absence of Intelligent Monitoring and Explainable Insights in Personal Digital Finance**
+>>>>>>> Stashed changes
 
 ---
 
@@ -18,6 +25,7 @@ Today’s users perform most of their financial activity through UPI, credit car
 ---
 
 ## Target Users
+<<<<<<< Updated upstream
 •⁠  ⁠College students managing monthly allowances or stipends
 
 •⁠  ⁠Working professionals using UPI and credit cards regularly
@@ -29,11 +37,20 @@ Today’s users perform most of their financial activity through UPI, credit car
 •⁠  ⁠First-time personal finance users seeking financial awareness
 
 •⁠  ⁠Anyone who downloads bank statements but never meaningfully analyzes them
+=======
+- College students managing monthly allowances or stipends
+- Working professionals using UPI and credit cards regularly
+- Individuals tracking recurring subscriptions and auto-debits
+- Users concerned about fraudulent or unauthorized transactions
+- First-time personal finance users seeking financial awareness
+- Anyone who downloads bank statements but never meaningfully analyzes them
+>>>>>>> Stashed changes
 
 ---
 
 ## Existing Gaps
 
+<<<<<<< Updated upstream
 1.⁠ ⁠*Banks provide records, not intelligence*  
    Banking applications generate statements but do not analyze personal financial behavior.
 
@@ -50,6 +67,24 @@ Today’s users perform most of their financial activity through UPI, credit car
    Alerts, when present, rarely explain why a transaction is unusual, reducing user trust and usefulness.
 
 6.⁠ ⁠*Unstructured financial data*  
+=======
+1. **Banks provide records, not intelligence**  
+   Banking applications generate statements but do not analyze personal financial behavior.
+
+2. **Reactive fraud awareness**  
+   Users typically discover fraudulent or incorrect transactions only after checking their statements manually.
+
+3. **Manual expense categorization**  
+   Existing expense trackers depend heavily on user input, making them inconvenient and unsustainable over time.
+
+4. **No behavioral analysis tools**  
+   Current personal finance apps focus on budgeting rather than detecting spending pattern changes or anomalies.
+
+5. **Lack of explainable alerts**  
+   Alerts, when present, rarely explain *why* a transaction is unusual, reducing user trust and usefulness.
+
+6. **Unstructured financial data**  
+>>>>>>> Stashed changes
    Bank statements in PDF or CSV formats are not readily interpretable by non-technical users.
 
 # 3. Proposed Solution
@@ -57,11 +92,16 @@ Today’s users perform most of their financial activity through UPI, credit car
 ## Solution Overview
 Traano is a full-stack intelligent financial monitoring platform that converts raw bank statements into meaningful behavioral insights. The system allows users to upload transaction statements in CSV or PDF formats, automatically extracts and structures transactions, categorizes expenses using AI, and analyzes spending behavior using statistical anomaly detection models.
 
+<<<<<<< Updated upstream
 Instead of only visualizing expenses, Traano actively monitors financial patterns and identifies irregular transactions. The platform not only flags anomalies but also explains why a transaction is unusual, enabling users to quickly understand potential risks and spending changes.
+=======
+Instead of only visualizing expenses, Traano actively monitors financial patterns and identifies irregular transactions. The platform not only flags anomalies but also explains *why* a transaction is unusual, enabling users to quickly understand potential risks and spending changes.
+>>>>>>> Stashed changes
 
 ---
 
 ## Core Idea
+<<<<<<< Updated upstream
 The core idea behind Traano is to shift personal finance from *passive record-keeping to proactive financial awareness*.
 
 Rather than requiring users to manually inspect statements, the system:
@@ -69,12 +109,22 @@ Rather than requiring users to manually inspect statements, the system:
 •⁠  ⁠Learns normal spending patterns
 •⁠  ⁠Detects deviations
 •⁠  ⁠Provides explainable alerts
+=======
+The core idea behind Traano is to shift personal finance from **passive record-keeping to proactive financial awareness**.
+
+Rather than requiring users to manually inspect statements, the system:
+- Understands transaction context (merchant behavior)
+- Learns normal spending patterns
+- Detects deviations
+- Provides explainable alerts
+>>>>>>> Stashed changes
 
 Traano combines rule-based processing, statistical analysis, and AI reasoning (Gemini API) to interpret financial activity similarly to internal bank monitoring systems, but in a user-centric and transparent manner.
 
 ---
 
 ## Key Features
+<<<<<<< Updated upstream
 •⁠  ⁠Upload bank statements (CSV and PDF)
 
 •⁠  ⁠Automatic transaction extraction and normalization
@@ -96,6 +146,19 @@ Traano combines rule-based processing, statistical analysis, and AI reasoning (G
 •⁠  ⁠Visual spending trends and timeline
 
 •⁠  ⁠AI-generated financial summaries and insights
+=======
+- Upload bank statements (CSV and PDF)
+- Automatic transaction extraction and normalization
+- AI-based merchant categorization using Gemini
+- Detection of unusual spending patterns
+- New/suspicious merchant identification
+- Spending frequency change detection
+- High-value transaction alerts
+- Behavioral shift analysis
+- Explainable anomaly risk scores
+- Visual spending trends and timeline
+- AI-generated financial summaries and insights
+>>>>>>> Stashed changes
 
 ---
 
@@ -109,6 +172,7 @@ User → Frontend → Backend API → Processing & AI Models → Database → In
 ## Architecture Description
 Traano follows a modular full-stack architecture consisting of a web interface, an API server, an AI processing layer, and a database.
 
+<<<<<<< Updated upstream
 1.⁠ ⁠*Frontend (React Web Application)*  
    Provides dashboard visualizations, file upload interface, anomaly alerts, and financial insights to the user.
 
@@ -135,6 +199,41 @@ Traano follows a modular full-stack architecture consisting of a web interface, 
 ## ER Diagram
 
 ![ER Diagram](Diagram%20from%20dbdiagram.png)
+=======
+1. **Frontend (React Web Application)**  
+   Provides dashboard visualizations, file upload interface, anomaly alerts, and financial insights to the user.
+
+2. **Backend (Node.js + Express Server)**  
+   Handles authentication, file uploads, parsing of CSV/PDF statements, transaction normalization, and communication with AI services.
+
+3. **AI Processing Layer (Python FastAPI Service)**  
+   Performs statistical analysis and anomaly detection using behavioral modeling techniques such as outlier detection, frequency analysis, and pattern deviation tracking.
+
+4. **AI Reasoning (Gemini API Integration)**  
+   Used for intelligent merchant categorization, transaction explanation, and generation of human-readable financial insights.
+
+5. **Database (MongoDB Atlas)**  
+   Stores users, transactions, categorized records, anomaly scores, and generated insights.
+
+---
+
+## Architecture Diagram
+(Add system architecture diagram image here)
+
+Suggested diagram components:
+- User
+- React Frontend
+- Express Backend
+- Python Anomaly Service
+- Gemini API
+- MongoDB Database
+- Response Dashboard
+
+# 5. Database Design
+
+## ER Diagram
+(Add ER diagram image here)
+>>>>>>> Stashed changes
 
 ---
 
@@ -143,6 +242,7 @@ The Traano database is designed to store structured financial data while support
 
 The system contains four primary entities:
 
+<<<<<<< Updated upstream
 *1. User*
 Stores account information and authentication details.
 
@@ -160,6 +260,25 @@ Stores AI-generated summaries and explanations produced using the Gemini API, in
 •⁠  ⁠One Transaction → One Category
 •⁠  ⁠One User → Many Insights
 •⁠  ⁠Transactions are analyzed to produce Insights and Anomaly Flags
+=======
+**1. User**
+Stores account information and authentication details.
+
+**2. Transaction**
+Stores each parsed financial transaction extracted from uploaded bank statements. Each transaction is linked to a user and contains merchant, amount, date, category, and anomaly score.
+
+**3. Category Insight**
+Stores aggregated spending information such as total spending per category, frequency, and trends.
+
+**4. Generated Insight**
+Stores AI-generated summaries and explanations produced using the Gemini API, including weekly reports and anomaly explanations.
+
+### Relationships
+- One User → Many Transactions
+- One Transaction → One Category
+- One User → Many Insights
+- Transactions are analyzed to produce Insights and Anomaly Flags
+>>>>>>> Stashed changes
 
 The schema allows efficient retrieval of user history, behavior trends, and suspicious activity patterns.
 
@@ -175,6 +294,7 @@ User-provided bank statements (CSV and PDF formats from banks, UPI apps, and cre
 
 ## Data Type
 Semi-structured financial transaction data including:
+<<<<<<< Updated upstream
 •⁠  ⁠Transaction date
 •⁠  ⁠Merchant description
 •⁠  ⁠Debit/Credit amount
@@ -193,6 +313,26 @@ The objective of Traano is to analyze *real personal financial behavior*, not sy
 7.⁠ ⁠Merchant name cleaning
 8.⁠ ⁠Removal of duplicates
 9.⁠ ⁠Structuring transactions into a unified format
+=======
+- Transaction date
+- Merchant description
+- Debit/Credit amount
+- Reference information
+
+## Selection Reason
+The objective of Traano is to analyze **real personal financial behavior**, not synthetic or pre-cleaned datasets. Therefore, the system works directly with raw bank statements as they are downloaded by users. This makes the platform practical and applicable in real-world scenarios.
+
+## Preprocessing Steps
+1. File upload handling
+2. PDF text extraction
+3. CSV parsing
+4. Column normalization
+5. Date standardization
+6. Amount cleaning (debit/credit separation)
+7. Merchant name cleaning
+8. Removal of duplicates
+9. Structuring transactions into a unified format
+>>>>>>> Stashed changes
 
 # 7. Model Selected
 
@@ -207,33 +347,56 @@ Financial anomaly detection in personal transactions does not require heavy deep
 Traano uses statistical techniques to model normal spending behavior and identify deviations. The Gemini API is used to interpret transactions semantically and generate human-readable explanations.
 
 This hybrid approach ensures:
+<<<<<<< Updated upstream
 •⁠  ⁠Practical implementation
 •⁠  ⁠Explainability
 •⁠  ⁠Low computational cost
 •⁠  ⁠Real-time feedback
+=======
+- Practical implementation
+- Explainability
+- Low computational cost
+- Real-time feedback
+>>>>>>> Stashed changes
 
 ---
 
 ## Alternatives Considered
+<<<<<<< Updated upstream
 •⁠  ⁠Isolation Forest
 •⁠  ⁠Autoencoders
 •⁠  ⁠Random Forest Classification
+=======
+- Isolation Forest
+- Autoencoders
+- Random Forest Classification
+>>>>>>> Stashed changes
 
 These were not selected because they require large labeled datasets and training time, which are impractical for a personal finance setting.
 
 ---
 
 ## Evaluation Metrics
+<<<<<<< Updated upstream
 •⁠  ⁠Outlier score (Z-score)
 •⁠  ⁠Frequency deviation
 •⁠  ⁠Merchant novelty detection
 •⁠  ⁠Spending behavior change
 •⁠  ⁠False positive rate
 •⁠  ⁠Explainability of alerts
+=======
+- Outlier score (Z-score)
+- Frequency deviation
+- Merchant novelty detection
+- Spending behavior change
+- False positive rate
+- Explainability of alerts
+>>>>>>> Stashed changes
 
 # 8. Technology Stack
 
 ## Frontend
+<<<<<<< Updated upstream
 •⁠  ⁠React (Vite)
 •⁠  ⁠Tailwind CSS
 •⁠  ⁠Recharts (Data Visualization)
@@ -262,3 +425,34 @@ These were not selected because they require large labeled datasets and training
 •⁠  ⁠Backend: Render / Railway
 •⁠  ⁠Python Service: Render
 •⁠  ⁠Database: MongoDB Atlas
+=======
+- React (Vite)
+- Tailwind CSS
+- Recharts (Data Visualization)
+- Axios
+
+## Backend
+- Node.js
+- Express.js
+- Multer (file uploads)
+- PDF-Parse
+- CSV-Parser
+
+## ML / AI
+- Python (FastAPI)
+- Pandas
+- NumPy
+- Scikit-learn (statistical modeling)
+- Google Gemini API (categorization & explanations)
+
+## Database
+- MongoDB Atlas
+- Mongoose ODM
+
+## Deployment
+- Frontend: Vercel / Netlify
+- Backend: Render / Railway
+- Python Service: Render
+- Database: MongoDB Atlas
+
+>>>>>>> Stashed changes

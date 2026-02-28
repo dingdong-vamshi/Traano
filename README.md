@@ -124,6 +124,10 @@ Traano follows a modular full-stack architecture consisting of a web interface, 
 5.⁠ ⁠*Database (MongoDB Atlas)*  
    Stores users, transactions, categorized records, anomaly scores, and generated insights.
 
+## System Architecture Diagram
+
+![System Architecture Diagram](SystemArchitectureDiagram.png)
+
 ---
 
 # 5. Database Design

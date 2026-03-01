@@ -102,18 +102,19 @@ const FIELD_PATTERNS = {
   category: [
     "category",
     "merchant_category",
-    "merchant category",
-    "type",
+    "merchant category"
+  ],
+
+  transactionType: [
     "transaction_type",
     "transaction type",
+    "type",
     "txn_type",
     "txn type",
     "payment_type",
     "payment type",
     "mode",
-    "channel",
-    "label",
-    "tag",
+    "channel"
   ],
 
   transactionId: [

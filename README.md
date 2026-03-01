@@ -334,7 +334,7 @@ These were not selected because they require large labeled datasets and training
 
 # 12. Demo & Video
 **Live Demo Link:** [traano.vercel.app](https://traano.vercel.app)  
-**Demo Video Link:** *(Add link here)*  
+**Demo Video Link:** https://drive.google.com/file/d/19DXsVjBnuxVdRZl1NGlRfIEFWRyueu4p/view?usp=sharing
 **GitHub Repository:** [https://github.com/dingdong-vamshi/Traano](https://github.com/dingdong-vamshi/Traano)
 
 ---

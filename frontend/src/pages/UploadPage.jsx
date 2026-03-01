@@ -30,55 +30,6 @@ const UploadPage = () => {
         }}
       />
 
-      {/* Header */}
-      <header
-        style={{
-          padding: "18px 32px",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          borderBottom: "1px solid var(--border)",
-        }}
-      >
-        <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-          <div
-            style={{
-              width: "32px",
-              height: "32px",
-              borderRadius: "8px",
-              background: "linear-gradient(135deg, var(--gradient-start), var(--gradient-end))",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              fontSize: "15px",
-              fontWeight: 800,
-              color: "white",
-            }}
-          >
-            T
-          </div>
-          <h1 style={{ fontSize: "18px", fontWeight: 700 }}>
-            <span className="gradient-text">Traano</span>
-          </h1>
-        </div>
-        <button
-          onClick={() => navigate("/dashboard")}
-          style={{
-            padding: "8px 16px",
-            borderRadius: "8px",
-            border: "1px solid var(--border)",
-            background: "transparent",
-            color: "var(--text-secondary)",
-            fontSize: "13px",
-            fontWeight: 500,
-            cursor: "pointer",
-            fontFamily: "inherit",
-          }}
-          id="nav-dashboard"
-        >
-          Dashboard →
-        </button>
-      </header>
 
       {/* Upload Card */}
       <main

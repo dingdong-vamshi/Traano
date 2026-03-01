@@ -127,102 +127,6 @@ const Dashboard = () => {
 
   return (
     <div style={{ minHeight: "100vh", background: "var(--surface)" }}>
-      {/* Header */}
-      <header
-        style={{
-          position: "sticky",
-          top: 0,
-          zIndex: 50,
-          padding: "14px 28px",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          borderBottom: "1px solid var(--border)",
-          background: "rgba(11, 17, 32, 0.9)",
-          backdropFilter: "blur(10px)",
-        }}
-      >
-        <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-          <div
-            style={{
-              width: "32px",
-              height: "32px",
-              borderRadius: "8px",
-              background: "linear-gradient(135deg, var(--gradient-start), var(--gradient-end))",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              fontSize: "15px",
-              fontWeight: 800,
-              color: "white",
-            }}
-          >
-            T
-          </div>
-          <h1 style={{ fontSize: "18px", fontWeight: 700 }}>
-            <span className="gradient-text">Traano</span>
-          </h1>
-          <span
-            style={{
-              fontSize: "11px",
-              color: "var(--text-muted)",
-              marginLeft: "6px",
-              padding: "2px 8px",
-              borderRadius: "4px",
-              background: "var(--surface-card)",
-            }}
-          >
-            Dashboard
-          </span>
-        </div>
-
-        <div style={{ display: "flex", gap: "8px" }}>
-          <button
-            onClick={fetchData}
-            id="refresh-btn"
-            style={{
-              padding: "7px 14px",
-              borderRadius: "7px",
-              border: "1px solid var(--border)",
-              background: "transparent",
-              color: "var(--text-secondary)",
-              fontSize: "12px",
-              fontWeight: 500,
-              cursor: "pointer",
-              fontFamily: "inherit",
-              transition: "all 0.15s",
-            }}
-            onMouseEnter={(e) => {
-              e.target.style.borderColor = "var(--primary)";
-              e.target.style.color = "var(--primary-light)";
-            }}
-            onMouseLeave={(e) => {
-              e.target.style.borderColor = "var(--border)";
-              e.target.style.color = "var(--text-secondary)";
-            }}
-          >
-            ↻ Refresh
-          </button>
-          <button
-            onClick={() => navigate("/upload")}
-            id="nav-upload"
-            style={{
-              padding: "7px 14px",
-              borderRadius: "7px",
-              border: "none",
-              background: "linear-gradient(135deg, var(--gradient-start), var(--gradient-end))",
-              color: "white",
-              fontSize: "12px",
-              fontWeight: 600,
-              cursor: "pointer",
-              fontFamily: "inherit",
-            }}
-          >
-            + Upload
-          </button>
-        </div>
-      </header>
-
       {/* Main Content */}
       <main
         style={{
@@ -231,6 +135,55 @@ const Dashboard = () => {
           padding: "24px 20px",
         }}
       >
+        {/* Page Actions */}
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "24px" }}>
+          <h2 style={{ fontSize: "22px", fontWeight: 700, color: "var(--text-primary)" }}>Dashboard Overview</h2>
+          <div style={{ display: "flex", gap: "8px" }}>
+            <button
+              onClick={fetchData}
+              id="refresh-btn"
+              style={{
+                padding: "8px 16px",
+                borderRadius: "8px",
+                border: "1px solid var(--border)",
+                background: "transparent",
+                color: "var(--text-secondary)",
+                fontSize: "13px",
+                fontWeight: 500,
+                cursor: "pointer",
+                fontFamily: "inherit",
+                transition: "all 0.15s",
+              }}
+              onMouseEnter={(e) => {
+                e.target.style.borderColor = "var(--primary)";
+                e.target.style.color = "var(--primary-light)";
+              }}
+              onMouseLeave={(e) => {
+                e.target.style.borderColor = "var(--border)";
+                e.target.style.color = "var(--text-secondary)";
+              }}
+            >
+              ↻ Refresh
+            </button>
+            <button
+              onClick={() => navigate("/upload")}
+              id="nav-upload"
+              style={{
+                padding: "8px 16px",
+                borderRadius: "8px",
+                border: "none",
+                background: "linear-gradient(135deg, var(--gradient-start), var(--gradient-end))",
+                color: "white",
+                fontSize: "13px",
+                fontWeight: 600,
+                cursor: "pointer",
+                fontFamily: "inherit",
+              }}
+            >
+              + Upload
+            </button>
+          </div>
+        </div>
         {/* Error */}
         {error && (
           <div

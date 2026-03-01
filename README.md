@@ -105,30 +105,7 @@ Traano combines rule-based processing, statistical analysis, and AI reasoning (G
 User → Frontend → Backend API → Processing & AI Models → Database → Insights & Alerts
 
 ---
-%% Use Case Diagram - hack-repo-PKJ (Personal Finance Anomaly Detector)
 
-actor User
-actor "System Admin" as Admin
-
-rectangle "Personal Finance Anomaly Detector System" {
-
-    User --> (Authenticate)
-    User --> (Upload Bank Statement)
-    User --> (View Dashboard)
-    User --> (Receive Alerts)
-    User --> (Download Insights)
-
-    (Upload Bank Statement) --> (Parse CSV/PDF)
-    (Parse CSV/PDF) --> (Normalize Transaction Data)
-    (Normalize Transaction Data) --> (Categorize Transactions)
-    (Categorize Transactions) --> (Run Anomaly Detection)
-    (Run Anomaly Detection) --> (Generate Financial Insights)
-    (Generate Financial Insights) --> (Store Results in Database)
-
-    Admin --> (Authenticate)
-    Admin --> (Manage Users)
-    Admin --> (Monitor System Logs)
-}
 ## Architecture Description
 Traano follows a modular full-stack architecture consisting of a web interface, an API server, an AI processing layer, and a database.
 
@@ -285,3 +262,121 @@ These were not selected because they require large labeled datasets and training
 •⁠  ⁠Backend: Render / Railway
 •⁠  ⁠Python Service: Render
 •⁠  ⁠Database: MongoDB Atlas
+
+---
+
+# 9. API Documentation & Testing
+
+## API Endpoints List
+### Endpoint 1:
+- **URL:** `POST /api/upload`
+- **Description:** Upload CSV or PDF bank statements for processing and anomaly detection.
+
+### Endpoint 2:
+- **URL:** `GET /api/transactions`
+- **Description:** Retrieve all processed and categorized transactions.
+
+### Endpoint 3:
+- **URL:** `GET /api/transactions/summary`
+- **Description:** Retrieve financial insights and aggregated summary data.
+
+## API Testing Screenshots
+*(Add Postman / Thunder Client screenshots here)*
+
+---
+
+# 10. Module-wise Development & Deliverables
+
+## Checkpoint 1: Research & Planning
+**Deliverables:**
+- Problem identification & solution concept
+- User journey mapping and system workflow design 
+
+## Checkpoint 2: Backend Development
+**Deliverables:**
+- Setup Node.js + Express backend
+- Implemented file upload APIs with Multer
+- CSV and PDF parsing logic
+
+## Checkpoint 3: Frontend Development
+**Deliverables:**
+- Built UI using React and Tailwind CSS
+- Developed interactive dashboard & customizable charts (Recharts)
+- Integrated frontend with backend APIs
+
+## Checkpoint 4: Model Training / Intelligent Processing
+**Deliverables:**
+- Implemented statistical logic for anomaly detection (Z-scores)
+- Developed frequency & risk distribution models
+
+## Checkpoint 5: Model Integration
+**Deliverables:**
+- Connected Google Gemini API for transaction semantic categorization
+- Integrated explainable risk generation engine into backend
+
+## Checkpoint 6: Deployment
+**Deliverables:**
+- Frontend deployed on Vercel
+- Backend APIs deployed on Render
+- MongoDB Atlas configured for cloud storage
+
+---
+
+# 11. End-to-End Workflow
+1. User uploads bank statements (CSV/PDF) via the frontend.
+2. File is processed (extracted, cleaned, standardized) by the backend.
+3. Transactions are categorized automatically using Gemini API and heuristic rules.
+4. Statistical engine evaluates each transaction for behavioral anomalies (risk scoring).
+5. Data is securely stored in MongoDB.
+6. User reviews categorized spending, insights, and explainable flagged transactions on the dashboard.
+
+---
+
+# 12. Demo & Video
+**Live Demo Link:** [traano.vercel.app](https://traano.vercel.app)  
+**Demo Video Link:** *(Add link here)*  
+**GitHub Repository:** [https://github.com/dingdong-vamshi/Traano](https://github.com/dingdong-vamshi/Traano)
+
+---
+
+# 13. Hackathon Deliverables Summary
+- Working, end-to-end full-stack web application.
+- Comprehensive AI/Backend intelligence for personal finance tracking.
+- Interactive user dashboard with real-time charts and explainable alerts.
+- Fully documented source code and system architecture.
+
+---
+
+# 14. Team Roles & Responsibilities
+
+| Member Name | Role | Responsibilities |
+| :--- | :--- | :--- |
+| **Vamshi** | Ideation & System Design | • Problem identification & solution concept<br>• Designed system workflow (8-stage pipeline)<br>• Planned database structure & anomaly strategy |
+| **Harshita Jain** | Frontend Developer | • Built UI using React & Tailwind<br>• Developed interactive dashboard & charts<br>• Integrated frontend with backend APIs |
+| **Rithwik Kuchana** | Backend Developer | • Developed APIs using Node.js & Express<br>• Implemented parsing & anomaly detection logic<br>• Managed MongoDB database & data security |
+
+---
+
+# 15. Future Scope & Scalability
+
+## Short-Term
+- Implement OAuth and personalized user accounts.
+- Add support for direct Plaid / Account Aggregator API integration for real-time tracking.
+- Email/SMS notifications for high-risk transactions.
+
+## Long-Term
+- Expand statistical models to include seasonal spending variation logic.
+- Release dedicated iOS and Android native apps.
+- Integrate budget-goal recommendations with anomaly alerts.
+
+---
+
+# 16. Known Limitations
+- Does not currently support automated scraping from banking portals (requires statement upload).
+- Dependency on external LLM (Gemini API) can create slight latency during initial categorizations.
+- Extremely novel merchants (with no online presence) might receive generic fallback categories.
+
+---
+
+# 17. Impact
+Traano shifts personal finance management from tedious retroactive record-keeping to proactive awareness. It bridges the gap between raw data and understandable insights, giving users confidence and ensuring that unusual, unauthorized, or fraudulent charges never slip past unnoticed.

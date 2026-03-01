@@ -1,6 +1,6 @@
 import { useState, useEffect, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
-import axiosInstance from "../api/axiosInstance";
+import axiosInstance from "../api/axios";
 import SummaryCards from "../components/SummaryCards";
 import Filters from "../components/Filters";
 import TransactionTable from "../components/TransactionTable";

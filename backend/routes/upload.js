@@ -6,6 +6,7 @@ const {
   getTransactions,
   getTransactionSummary,
 } = require("../controllers/uploadController");
+const authMiddleware = require("../middleware/authMiddleware");
 
 const router = express.Router();
 
@@ -39,8 +40,8 @@ const upload = multer({
 });
 
 // Routes
-router.post("/upload", upload.single("statement"), uploadStatement);
-router.get("/transactions", getTransactions);
-router.get("/transactions/summary", getTransactionSummary);
+router.post("/upload", authMiddleware, upload.single("statement"), uploadStatement);
+router.get("/transactions", authMiddleware, getTransactions);
+router.get("/transactions/summary", authMiddleware, getTransactionSummary);
 
 module.exports = router;

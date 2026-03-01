@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const dotenv = require("dotenv");
 const connectDB = require("./config/db");
+const authRoutes = require("./routes/auth");
 const uploadRoutes = require("./routes/upload");
 
 // Load environment variables
@@ -16,6 +17,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // API Routes
+app.use("/api/auth", authRoutes);
 app.use("/api", uploadRoutes);
 
 // Health check

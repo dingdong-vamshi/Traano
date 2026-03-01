@@ -105,7 +105,30 @@ Traano combines rule-based processing, statistical analysis, and AI reasoning (G
 User → Frontend → Backend API → Processing & AI Models → Database → Insights & Alerts
 
 ---
+%% Use Case Diagram - hack-repo-PKJ (Personal Finance Anomaly Detector)
 
+actor User
+actor "System Admin" as Admin
+
+rectangle "Personal Finance Anomaly Detector System" {
+
+    User --> (Authenticate)
+    User --> (Upload Bank Statement)
+    User --> (View Dashboard)
+    User --> (Receive Alerts)
+    User --> (Download Insights)
+
+    (Upload Bank Statement) --> (Parse CSV/PDF)
+    (Parse CSV/PDF) --> (Normalize Transaction Data)
+    (Normalize Transaction Data) --> (Categorize Transactions)
+    (Categorize Transactions) --> (Run Anomaly Detection)
+    (Run Anomaly Detection) --> (Generate Financial Insights)
+    (Generate Financial Insights) --> (Store Results in Database)
+
+    Admin --> (Authenticate)
+    Admin --> (Manage Users)
+    Admin --> (Monitor System Logs)
+}
 ## Architecture Description
 Traano follows a modular full-stack architecture consisting of a web interface, an API server, an AI processing layer, and a database.
 

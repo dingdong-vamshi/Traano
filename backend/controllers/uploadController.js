@@ -1,5 +1,6 @@
 const path = require("path");
 const fs = require("fs");
+const mongoose = require("mongoose");
 const { parseCSV } = require("../utils/parseCSV");
 const { detectColumns } = require("../utils/columnMapper");
 const { normalizeRows } = require("../utils/normalizer");
@@ -77,10 +78,11 @@ const uploadStatement = async (req, res) => {
       });
     }
 
-    // --- Attach batch ID ---
+    // --- Attach batch ID & User ID ---
     transactions = transactions.map((t) => ({
       ...t,
       uploadBatchId,
+      userId: req.user.id,
     }));
 
     // --- Step 4: Run anomaly detection ---
@@ -147,7 +149,7 @@ const getTransactions = async (req, res) => {
       riskLevel,
     } = req.query;
 
-    const filter = {};
+    const filter = { userId: req.user.id };
     if (type) filter.type = type;
     if (batchId) filter.uploadBatchId = batchId;
     if (riskLevel) filter.riskLevel = riskLevel;
@@ -190,9 +192,10 @@ const getTransactions = async (req, res) => {
  */
 const getTransactionSummary = async (req, res) => {
   try {
-    const totalTransactions = await Transaction.countDocuments();
+    const totalTransactions = await Transaction.countDocuments({ userId: req.user.id });
 
     const summary = await Transaction.aggregate([
+      { $match: { userId: new mongoose.Types.ObjectId(req.user.id) } },
       {
         $group: {
           _id: "$type",
@@ -203,12 +206,12 @@ const getTransactionSummary = async (req, res) => {
       },
     ]);
 
-    const recentTransactions = await Transaction.find()
+    const recentTransactions = await Transaction.find({ userId: req.user.id })
       .sort({ date: -1 })
       .limit(5);
 
     const topCategories = await Transaction.aggregate([
-      { $match: { type: "debit" } },
+      { $match: { type: "debit", userId: new mongoose.Types.ObjectId(req.user.id) } },
       {
         $group: {
           _id: "$category",

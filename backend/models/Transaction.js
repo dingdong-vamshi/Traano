@@ -2,6 +2,11 @@ const mongoose = require("mongoose");
 
 const transactionSchema = new mongoose.Schema(
   {
+    userId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      required: true,
+    },
     date: {
       type: Date,
       required: true,
@@ -48,8 +53,8 @@ const transactionSchema = new mongoose.Schema(
 );
 
 // Indexes for efficient queries
+transactionSchema.index({ userId: 1, date: -1 }); // Compound index for fast user transaction lookups
 transactionSchema.index({ date: -1 });
-transactionSchema.index({ uploadBatchId: 1 });
 transactionSchema.index({ type: 1 });
 transactionSchema.index({ anomalyScore: -1 });
 transactionSchema.index({ riskLevel: 1 });

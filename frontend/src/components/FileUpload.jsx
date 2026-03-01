@@ -1,5 +1,5 @@
 import { useState, useRef } from "react";
-import axiosInstance from "../api/axiosInstance";
+import axiosInstance from "../api/axios";
 
 /**
  * FileUpload — Drag & drop CSV upload with progress
@@ -73,8 +73,8 @@ const FileUpload = ({ onUploadSuccess }) => {
     } catch (err) {
       setError(
         err.response?.data?.error ||
-          err.response?.data?.message ||
-          "Upload failed. Please try again."
+        err.response?.data?.message ||
+        "Upload failed. Please try again."
       );
     } finally {
       setUploading(false);

@@ -17,7 +17,7 @@
  * }
  */
 
-const { ALLOWED_CATEGORIES, extractMerchant, categorizeTransaction } = require("../services/categorizationService");
+const { getCategory } = require("../services/categoryService");
 
 /**
  * Normalize an array of raw CSV rows using the detected column mapping.
@@ -101,24 +101,8 @@ const normalizeRow = async (row, mapping, hasDebitCredit) => {
   const transactionType = cleanString(getField(row, mapping.transactionType));
 
   // --- Category derivation ---
-  let category = "Uncategorized";
-  const rawCsvCategory = cleanString(getField(row, mapping.category));
-
-  // 1. Try to use CSV category if it matches our allowed list
-  if (rawCsvCategory) {
-    const matchedCategory = ALLOWED_CATEGORIES.find(
-      (c) => c.toLowerCase() === rawCsvCategory.toLowerCase()
-    );
-    if (matchedCategory) {
-      category = matchedCategory;
-    }
-  }
-
-  // 2. Fallback to prediction if no valid CSV category was found
-  if (category === "Uncategorized") {
-    const merchant = extractMerchant(description);
-    category = await categorizeTransaction(merchant);
-  }
+  const transactionData = { description, ...row };
+  const category = await getCategory(transactionData, mapping.category);
 
   // --- Build metadata (full original row) ---
   const metadata = { ...row };

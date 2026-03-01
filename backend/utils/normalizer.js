@@ -17,20 +17,22 @@
  * }
  */
 
+const { ALLOWED_CATEGORIES, extractMerchant, categorizeTransaction } = require("../services/categorizationService");
+
 /**
  * Normalize an array of raw CSV rows using the detected column mapping.
  *
  * @param {Object[]} rows       - Raw parsed CSV rows
  * @param {Object}   mapping    - Column mapping from detectColumns()
  * @param {boolean}  hasDebitCredit - Whether separate debit/credit columns exist
- * @returns {Object[]} Normalized transaction objects
+ * @returns {Promise<Object[]>} Normalized transaction objects
  */
-const normalizeRows = (rows, mapping, hasDebitCredit) => {
+const normalizeRows = async (rows, mapping, hasDebitCredit) => {
   const normalized = [];
 
   for (const row of rows) {
     try {
-      const transaction = normalizeRow(row, mapping, hasDebitCredit);
+      const transaction = await normalizeRow(row, mapping, hasDebitCredit);
       if (transaction) {
         normalized.push(transaction);
       }
@@ -51,9 +53,9 @@ const normalizeRows = (rows, mapping, hasDebitCredit) => {
  * @param {Object}  row            - Single raw CSV row
  * @param {Object}  mapping        - Column mapping
  * @param {boolean} hasDebitCredit  - Separate debit/credit columns
- * @returns {Object|null} Normalized transaction or null if invalid
+ * @returns {Promise<Object|null>} Normalized transaction or null if invalid
  */
-const normalizeRow = (row, mapping, hasDebitCredit) => {
+const normalizeRow = async (row, mapping, hasDebitCredit) => {
   // --- Extract and validate date ---
   const rawDate = getField(row, mapping.date);
   const date = parseDate(rawDate);
@@ -94,8 +96,29 @@ const normalizeRow = (row, mapping, hasDebitCredit) => {
   if (amount === 0) return null;
 
   // --- Extract optional fields ---
-  const description = cleanString(getField(row, mapping.description)) || "";
-  const category = cleanString(getField(row, mapping.category)) || "Uncategorized";
+  // --- Extract description and transactionType ---
+  const description = getField(row, mapping.description); // Kept raw, no cleanString
+  const transactionType = cleanString(getField(row, mapping.transactionType));
+
+  // --- Category derivation ---
+  let category = "Uncategorized";
+  const rawCsvCategory = cleanString(getField(row, mapping.category));
+
+  // 1. Try to use CSV category if it matches our allowed list
+  if (rawCsvCategory) {
+    const matchedCategory = ALLOWED_CATEGORIES.find(
+      (c) => c.toLowerCase() === rawCsvCategory.toLowerCase()
+    );
+    if (matchedCategory) {
+      category = matchedCategory;
+    }
+  }
+
+  // 2. Fallback to prediction if no valid CSV category was found
+  if (category === "Uncategorized") {
+    const merchant = extractMerchant(description);
+    category = await categorizeTransaction(merchant);
+  }
 
   // --- Build metadata (full original row) ---
   const metadata = { ...row };
@@ -104,6 +127,7 @@ const normalizeRow = (row, mapping, hasDebitCredit) => {
     date,
     amount: roundAmount(amount),
     type,
+    transactionType,
     category,
     description,
     metadata,

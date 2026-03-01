@@ -20,6 +20,10 @@ const transactionSchema = new mongoose.Schema(
       enum: ["debit", "credit", "unknown"],
       default: "unknown",
     },
+    transactionType: {
+      type: String,
+      default: "",
+    },
     category: {
       type: String,
       default: "Uncategorized",

@@ -3,6 +3,7 @@ const fs = require("fs");
 const mongoose = require("mongoose");
 const { parseCSV } = require("../utils/parseCSV");
 const { detectColumns } = require("../utils/columnMapper");
+const { mergeMultilineRows } = require("../utils/mergeMultilineRows");
 const { normalizeRows } = require("../utils/normalizer");
 const { analyzeTransactions } = require("../services/anomalyService");
 const Transaction = require("../models/Transaction");
@@ -64,9 +65,12 @@ const uploadStatement = async (req, res) => {
 
     const { mapping, hasDebitCredit } = columnResult;
 
+    // --- Step 2.5: Merge multiline rows (if any) ---
+    const mergedRows = mergeMultilineRows(rows, mapping);
+
     // --- Step 3: Normalize rows ---
     const uploadBatchId = `batch_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
-    let transactions = normalizeRows(rows, mapping, hasDebitCredit);
+    let transactions = await normalizeRows(mergedRows, mapping, hasDebitCredit);
 
     if (transactions.length === 0) {
       cleanupFile(filePath);
@@ -74,7 +78,7 @@ const uploadStatement = async (req, res) => {
         success: false,
         error:
           "No valid transactions could be extracted. Rows may have invalid dates or zero amounts.",
-        totalRowsParsed: rows.length,
+        totalRowsParsed: mergedRows.length,
       });
     }
 
@@ -113,9 +117,10 @@ const uploadStatement = async (req, res) => {
       riskDistribution,
       summary: {
         totalRowsParsed: rows.length,
+        totalMerged: mergedRows.length,
         totalNormalized: transactions.length,
         totalStored: savedTransactions.length,
-        skippedRows: rows.length - transactions.length,
+        skippedRows: mergedRows.length - transactions.length,
       },
     });
   } catch (error) {

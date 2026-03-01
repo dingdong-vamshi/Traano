@@ -105,7 +105,35 @@ Traano combines rule-based processing, statistical analysis, and AI reasoning (G
 User → Frontend → Backend API → Processing & AI Models → Database → Insights & Alerts
 
 ---
+## Use Case Diagram
 
+```mermaid
+usecaseDiagram
+  actor User
+  
+  package "Traano Platform" {
+    usecase "Sign Up / Login" as UC1
+    usecase "Upload CSV Statement" as UC2
+    usecase "Automatic Column Detection" as UC3
+    usecase "Data Normalization" as UC4
+    usecase "Statistical Risk Assessment" as UC5
+    usecase "Transaction Categorization" as UC6
+    usecase "View Interactive Dashboard" as UC7
+    usecase "Review Flagged Anomalies" as UC8
+    usecase "View Spending Trends & Categories" as UC9
+  }
+
+  User --> UC1
+  User --> UC2
+  User --> UC7
+  User --> UC8
+  User --> UC9
+
+  UC2 ..> UC3 : <<includes>>
+  UC3 ..> UC4 : <<includes>>
+  UC4 ..> UC5 : <<includes>>
+  UC4 ..> UC6 : <<includes>>
+```
 ## Architecture Description
 Traano follows a modular full-stack architecture consisting of a web interface, an API server, an AI processing layer, and a database.
 

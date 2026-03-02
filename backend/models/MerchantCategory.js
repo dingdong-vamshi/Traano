@@ -24,6 +24,5 @@ const merchantCategorySchema = new mongoose.Schema(
   }
 );
 
-merchantCategorySchema.index({ merchantName: 1 });
 
 module.exports = mongoose.model("MerchantCategory", merchantCategorySchema);

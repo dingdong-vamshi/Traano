@@ -15,16 +15,16 @@ const allowedCategories = [
 ];
 
 const categoryRules = {
-  Food: ["swiggy", "zomato", "restaurant", "cafe", "doordash", "kfc", "mcdonald", "starbucks", "burger"],
-  Transport: ["uber", "ola", "metro", "rapido", "fuel", "petrol", "bpcl", "hpcl", "indian oil", "auto"],
-  Shopping: ["amazon", "amzn", "flipkart", "myntra", "meesho", "zara", "h&m", "retail", "store"],
-  Utilities: ["electricity", "water", "gas", "recharge", "bbps", "rent", "broadband", "airtel", "jio", "vi", "bescom"],
-  Entertainment: ["netflix", "spotify", "movie", "bookmyshow", "pvr", "inox"],
-  Travel: ["airlines", "flight", "irctc", "makemytrip", "agoda", "booking", "hotel", "oyo"],
-  Healthcare: ["hospital", "pharmacy", "apollo", "clinic", "medplus", "health"],
-  Education: ["school", "college", "university", "udemy", "coursera", "byjus"],
-  Groceries: ["blinkit", "zepto", "instamart", "reliance fresh", "supermarket", "wholefds", "more supermarket", "grocery", "dmart"],
-  Others: ["salary", "zerodha", "groww", "investment", "tax", "loan", "emi", "bajaj finserv"]
+  Food: ["swiggy", "zomato", "restaurant", "cafe", "doordash", "kfc", "mcdonald", "starbucks", "burger", "food"],
+  Transport: ["uber", "ola", "metro", "rapido", "fuel", "petrol", "bpcl", "hpcl", "indian oil", "auto", "transport", "cab"],
+  Shopping: ["amazon", "amzn", "flipkart", "myntra", "meesho", "zara", "h&m", "retail", "store", "shopping"],
+  Utilities: ["electricity", "water", "gas", "recharge", "bbps", "rent", "broadband", "airtel", "jio", "vi", "bescom", "utility", "utilities"],
+  Entertainment: ["netflix", "spotify", "movie", "bookmyshow", "pvr", "inox", "entertainment"],
+  Travel: ["airlines", "flight", "irctc", "makemytrip", "agoda", "booking", "hotel", "oyo", "travel"],
+  Healthcare: ["hospital", "pharmacy", "apollo", "clinic", "medplus", "health", "healthcare"],
+  Education: ["school", "college", "university", "udemy", "coursera", "byjus", "education"],
+  Groceries: ["blinkit", "zepto", "instamart", "reliance fresh", "supermarket", "wholefds", "more supermarket", "grocery", "groceries", "dmart"],
+  Others: ["salary", "zerodha", "groww", "investment", "tax", "loan", "emi", "bajaj finserv", "other", "others"]
 };
 
 // Extracts merchant from description safely
